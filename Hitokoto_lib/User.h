@@ -29,14 +29,12 @@ public:
     void changePwd(const string& plain);
     friend ostream& operator<<(ostream& out, const User& src);
 
-
     static const std::shared_ptr<EncryptStrategy> encrypt_strategy;
 
 private:
     string name;
     Cipher cipher_pwd;
     static map<string, User*> user_map;
-
 };
 
 #endif /* USER_H */
