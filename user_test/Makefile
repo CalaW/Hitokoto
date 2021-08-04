@@ -16,3 +16,7 @@ TrivialUser.o: TrivialUser.cpp TrivialUser.h
 	clang++ -c $< -o $@ -std=c++11
 User.o: User.cpp User.h
 	clang++ -c $< -o $@ -std=c++11
+.Phony:clean
+
+clean:
+	rm *.o

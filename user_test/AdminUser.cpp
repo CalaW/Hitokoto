@@ -10,7 +10,11 @@ AdminUser::AdminUser(const string& pwd)
 : User("Admin", pwd) {}
 
 void AdminUser::AddTrivialUser(const string& usrname, const string& pwd) {
-    new TrivialUser(usrname, pwd);
+    if (this && this->isAdmin()) { //must called by an admin instance
+        new TrivialUser(usrname, pwd);
+    } else {
+        throw std::invalid_argument("Permission denied!");
+    }
 }
 
 void AdminUser::AddAdminUser(const string& pwd) {
