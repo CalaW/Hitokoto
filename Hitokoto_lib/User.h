@@ -9,6 +9,8 @@
 #include <memory>
 #include "EncryptStrategy.h"
 #include "Cipher.h"
+#include "TrivialUser.h"
+#include "AdminUser.h"
 
 using std::string;
 using std::map;
@@ -16,11 +18,7 @@ using std::ostream;
 
 class User {
 public:
-    User() = delete; //can't construct user without name and pwd
-    User(const User&) = delete; //can't copy user
-    User& operator=(const User&) = delete; //can't copy user
-
-    static bool verify(const string& name, const string& pwd);
+    static User* verify(const string& name, const string& pwd);
     static void loadFromFile(const string& path);
     static void saveToFile(const string& path);
 
@@ -31,10 +29,14 @@ public:
 
     static const std::shared_ptr<EncryptStrategy> encrypt_strategy;
 
+protected:
+    User(const string& usrname, const string& pwd);
 private:
     string name;
     Cipher cipher_pwd;
     static map<string, User*> user_map;
+
+    friend class AdminUser;
 };
 
 #endif /* USER_H */
