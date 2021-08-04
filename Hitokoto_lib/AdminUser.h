@@ -1,7 +1,8 @@
 #ifndef ADMINUSER_H
 #define ADMINUSER_H
 
-#include "User.cpp"
+#include "User.h"
+#include "TrivialUser.h"
 
 using std::string;
 
@@ -11,12 +12,14 @@ public:
     AdminUser& operator=(const AdminUser&) = delete;
     bool isAdmin() const override;
     void AddTrivialUser(const string& usrname, const string& pwd);
-    void AddAdminUser(const string& pwd = default_pwd);
+    static void AddAdminUser(const string& pwd = default_pwd);
+    static void AddAdminUser(const Cipher& pwd);
     ~AdminUser();
 private:
     static string default_pwd;
     static AdminUser* instance;
     AdminUser(const string& pwd);
+    AdminUser(const Cipher& pwd);
 };
 
 #endif /* ADMINUSER_H */

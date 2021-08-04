@@ -13,8 +13,8 @@ public:
     static Cipher makeFromCipher(const string& cipher, EncryptStrategy* strategy);
 
     void update(const string& plain);
-    bool operator==(const string& src);
-    bool operator!=(const string& src);
+    bool operator==(const string& src) const;
+    bool operator!=(const string& src) const;
     friend std::ostream& operator<<(std::ostream& out, const Cipher& src);
 
 private:

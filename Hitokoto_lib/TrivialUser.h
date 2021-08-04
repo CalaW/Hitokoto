@@ -11,8 +11,10 @@ public:
     bool isAdmin() const override;
 private:
     TrivialUser(const string& name, const string& pwd);
+    TrivialUser(const string& name, const Cipher& pwd);
 
     friend class AdminUser;
+    friend class User;
 };
 
 #endif /* TRIVIALUSER_H */

@@ -17,11 +17,11 @@ Cipher::Cipher(const string& plain, EncryptStrategy* init_strategy)
 
 Cipher::Cipher() {}
 
-bool Cipher::operator!=(const string& src) {
+bool Cipher::operator!=(const string& src) const {
     return cipher_text != encrypt_strategy->encrypt(src);
 }
 
-bool Cipher::operator==(const string& src) {
+bool Cipher::operator==(const string& src) const {
     return cipher_text == encrypt_strategy->encrypt(src);
 }
 
