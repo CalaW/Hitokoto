@@ -1,5 +1,7 @@
 #include "AdminUser.h"
 
+string AdminUser::default_pwd = "Admin";
+
 AdminUser* AdminUser::instance = nullptr;
 
 bool AdminUser::isAdmin() const {return true;}
@@ -11,7 +13,7 @@ void AdminUser::AddTrivialUser(const string& usrname, const string& pwd) {
     new TrivialUser(usrname, pwd);
 }
 
-void AdminUser::AddAdminUser(const string& pwd = default_pwd) {
+void AdminUser::AddAdminUser(const string& pwd) {
     if (instance == nullptr) {
         instance = new AdminUser(pwd);
     } else {
