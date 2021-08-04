@@ -79,6 +79,7 @@
         "unordered_map": "cpp",
         "vector": "cpp",
         "memory_resource": "cpp",
-        "stop_token": "cpp"
+        "stop_token": "cpp",
+        "filesystem": "cpp"
     }
 }

@@ -5,11 +5,12 @@
 
 int main()
 {
-    AdminUser::AddAdminUser();
+    User::loadFromFile("user.txt");
     User* current_usr;
     try {
         current_usr = User::verify("Admin", "Admin");
         std::cout << "Admin login success" << std::endl;
+        current_usr->changePwd("hahaha");
     }
     catch(const std::exception& e) { std::cerr << e.what() << '\n'; return 0; }
     try { dynamic_cast<AdminUser*>(current_usr)->AddTrivialUser("ada","123"); }
@@ -30,6 +31,7 @@ int main()
         notwork->AddTrivialUser("aaa","123");
     }
     catch(const std::exception& e) { std::cerr << e.what() << '\n'; }
+    User::saveToFile("user.txt");
 
     return 0;
 }

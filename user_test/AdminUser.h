@@ -13,11 +13,13 @@ public:
     bool isAdmin() const override;
     void AddTrivialUser(const string& usrname, const string& pwd);
     static void AddAdminUser(const string& pwd = default_pwd);
+    static void AddAdminUser(const Cipher& pwd);
     ~AdminUser();
 private:
     static string default_pwd;
     static AdminUser* instance;
     AdminUser(const string& pwd);
+    AdminUser(const Cipher& pwd);
 };
 
 #endif /* ADMINUSER_H */
