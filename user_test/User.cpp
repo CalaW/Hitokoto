@@ -60,13 +60,13 @@ void User::loadFromFile(const string& path) {
         std::getline(user_file, name);
         std::getline(user_file, pwd);
         if (name == "Admin") {
-            AdminUser::AddAdminUser(Cipher::makeFromCipher(pwd, encrypt_str.get()));
+            AdminUser::addAdminUser(Cipher::makeFromCipher(pwd, encrypt_str.get()));
         } else {
             new TrivialUser(name, Cipher::makeFromCipher(pwd, encrypt_str.get()));
         }
     }
-    if (user_map.empty()) {
-        AdminUser::AddAdminUser();
+    if (user_map.empty() || user_map.count("Admin") == 0) {
+        AdminUser::addAdminUser();
     }
 }
 

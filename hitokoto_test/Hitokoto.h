@@ -4,6 +4,7 @@
 #include <ctime>
 
 class Hitokoto {
-    Date _date;
-    Date 
-}
+
+};
+
+#endif /* HITOKOTO_H */

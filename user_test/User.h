@@ -25,7 +25,7 @@ public:
     void changePwd(const string& plain);
     friend ostream& operator<<(ostream& out, const User& src);
 
-    static const std::shared_ptr<EncryptStrategy> encrypt_strategy;
+    static const std::shared_ptr<EncryptStrategy> encrypt_str;
 
 protected:
     User(const string& usrname, const string& pwd);

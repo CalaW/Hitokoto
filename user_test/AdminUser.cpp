@@ -12,7 +12,7 @@ AdminUser::AdminUser(const string& pwd) //TODO template
 AdminUser::AdminUser(const Cipher& cipher_pwd)
 : User("Admin", cipher_pwd) {}
 
-void AdminUser::AddTrivialUser(const string& usrname, const string& pwd) {
+void AdminUser::addTrivialUser(const string& usrname, const string& pwd) {
     if (this->isAdmin()) { //must called by an admin user
         new TrivialUser(usrname, pwd);
     } else {
@@ -20,7 +20,7 @@ void AdminUser::AddTrivialUser(const string& usrname, const string& pwd) {
     }
 }
 
-void AdminUser::AddAdminUser(const string& cipher_pwd) { //TODO template
+void AdminUser::addAdminUser(const string& cipher_pwd) { //TODO template
     if (instance == nullptr) {
         instance = new AdminUser(cipher_pwd);
     } else {
@@ -28,7 +28,7 @@ void AdminUser::AddAdminUser(const string& cipher_pwd) { //TODO template
     }
 }
 
-void AdminUser::AddAdminUser(const Cipher& cipher_pwd) {
+void AdminUser::addAdminUser(const Cipher& cipher_pwd) {
     if (instance == nullptr) {
         instance = new AdminUser(cipher_pwd);
     } else {
