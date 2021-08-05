@@ -13,7 +13,7 @@ using std::ostream;
 
 map<string, User*> User::user_map{};
 
-const std::shared_ptr<EncryptStrategy> User::encrypt_str (new Md5Strategy());
+const std::shared_ptr<EncryptStrategy> User::encrypt_str(new Md5Strategy());
 
 User* User::verify(const string& name, const string& pwd) {
     auto it = user_map.find(name);
@@ -72,6 +72,9 @@ void User::loadFromFile(const string& path) {
 
 void User::saveToFile(const string& path) {
     std::ofstream user_file(path);
+    if (!user_file.is_open()) {
+        throw std::invalid_argument("Cannot create file \"" + path + "\"");
+    }
     for (const auto& it : user_map) {
         user_file << *it.second;
     }
