@@ -7,26 +7,36 @@ using std::cout;
 
 int main()
 {
-    // time_t timeT;
-    // tm* timeS;
-    // time(&timeT);
-    // std::cout << timeT << std::endl;
-    // timeS = localtime(&timeT);
-    // std::cout << "Local: " << asctime(timeS) << std::endl;
-    // timeS = gmtime(&timeT);
-    // std::cout << "UTC:   " << asctime(timeS) << std::endl;
+    time_t timeT;
+    tm* timeS;
+    time(&timeT);
+    std::cout << timeT << std::endl;
+    timeS = localtime(&timeT);
+    std::cout << "Local: " << asctime(timeS) << std::endl;
+    timeS = gmtime(&timeT);
+    std::cout << "UTC:   " << asctime(timeS) << std::endl;
 
-    Hitokoto::loadFromFile("hitokoto.txt");
+    cin >> timeS->tm_year >> timeS->tm_mon >> timeS->tm_mday
+        >> timeS->tm_hour >> timeS->tm_min >> timeS->tm_sec;
+    timeS->tm_year -= 1900;
+    timeS->tm_mon -= 1;
 
-    tm m_time = {0};
-    time_t timeV;
-    Hitokoto_type type;
-    cin >> m_time.tm_year >> m_time.tm_mon >> m_time.tm_mday
-        >> m_time.tm_hour >> m_time.tm_min >> m_time.tm_sec
-        >> type;
-    new Hitokoto(m_time, "Hello world", type);
-    time(&timeV);
-    new Hitokoto(*localtime(&timeV), "currenttime", Hitokoto_type::thought);
+    std::cout << mktime(timeS) << std::endl;
+    std::cout << timeS->tm_year << timeS->tm_mon << timeS->tm_mday
+        << timeS->tm_hour << timeS->tm_min << timeS->tm_sec << timeS->tm_isdst << std::endl;
+    std::cout << asctime(timeS) << std::endl;
+
+    // Hitokoto::loadFromFile("hitokoto.txt");
+
+    // tm timeS = {0};
+    // time_t timeV;
+    // Hitokoto_type type;
+    // cin >> timeS.tm_year >> timeS.tm_mon >> timeS.tm_mday
+    //     >> timeS.tm_hour >> timeS.tm_min >> timeS.tm_sec
+    //     >> type;
+    // new Hitokoto(timeS, "Hello world", type);
+    // time(&timeV);
+    // new Hitokoto(*localtime(&timeV), "currenttime", Hitokoto_type::thought);
     // while (true) {
     //     string operation;
     //     cin >> operation;
@@ -35,6 +45,6 @@ int main()
     //     Hitokoto::saveToFile("operation.txt");
     // }
 
-    Hitokoto::saveToFile("hitokoto.txt");
+    // Hitokoto::saveToFile("hitokoto.txt");
     return 0;
 }
