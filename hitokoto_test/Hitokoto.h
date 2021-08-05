@@ -2,10 +2,10 @@
 #define HITOKOTO_H
 
 #include <iostream>
-#include <ctime>
 #include <string>
 #include <map>
 #include <memory>
+#include "Time.h"
 
 using std::string;
 using std::multimap;
@@ -23,15 +23,15 @@ istream& operator>>(istream& in, Hitokoto_type& type);
 
 class Hitokoto {
 public:
-    Hitokoto(time_t time, const string& content, Hitokoto_type type);
-    Hitokoto(tm& time, const string& content, Hitokoto_type type);
-    inline tm& getLocalTime() const {return *localtime(&m_time);}
-    inline tm& getUTCTime() const {return *gmtime(&m_time);}
-    inline time_t getTime() const {return m_time;}
+    Hitokoto(const Time& time, const string& content, Hitokoto_type type);
+    inline tm& getLocalTime() const {return m_time.getLocalTime();}
+    inline tm& getUTCTime() const {return m_time.getUTCTime();}
+    inline time_t getTime() const {return m_time.getTime();}
     inline const string& getContent() const {return m_content;}
     inline Hitokoto_type getType() const {return m_type;}
-    inline void setTime(time_t time) {m_time = time;}
-    inline void setTime(tm& time) {m_time = mktime(&time);}
+    inline void setTime(const Time& time) {m_time = time;}
+    // inline void setTime(time_t time) {m_time.setTime(time);}
+    // inline void setTime(tm& time) {m_time.setTime(time);}
     inline void setContent(const string& content) {m_content = content;}
     inline void setType(Hitokoto_type type) {m_type = type;}
     ~Hitokoto();
@@ -39,7 +39,7 @@ public:
     static void loadFromFile(const string& path);
     static void saveToFile(const string& path);
 private:
-    time_t m_time;
+    Time m_time;
     string m_content;
     Hitokoto_type m_type;
 

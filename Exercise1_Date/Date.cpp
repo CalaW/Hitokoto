@@ -75,7 +75,7 @@ bool Date::IsValidDate(const unsigned int year, const unsigned int month,
         Dexcept.Add("error: Month out of range.\n");
     }
     unsigned int day_of_month[] = {31,28,31,30,31,30,31,31,30,31,30,31};
-    if (IsLeapYear(year)) {day_of_month[2-1]++;}//leap year
+    if (isLeapYear(year)) {day_of_month[2-1]++;}//leap year
     if (month < 1 || month > 12) {
         //jmp
     }
@@ -99,7 +99,7 @@ bool Date::IsValidDate() {
     if (year < min_year || year > max_year) {return false;}
     if (month < 1 || month > 12) {return false;}
     unsigned int day_of_month[] = {31,28,31,30,31,30,31,31,30,31,30,31};
-    if (IsLeapYear(year)) {day_of_month[2-1]++;} //leap year
+    if (isLeapYear(year)) {day_of_month[2-1]++;} //leap year
     if (date < 1 || date > day_of_month[month - 1]) {return false;}
     
     return true;
@@ -112,7 +112,7 @@ bool Date::IsValidDate() {
  * @retval true: Is leap year 
  * @retval false: Isn't leap year
  */
-inline bool Date::IsLeapYear(const unsigned int year) {
+inline bool Date::isLeapYear(const unsigned int year) {
     return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
 }
 

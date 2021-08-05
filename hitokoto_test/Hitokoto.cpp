@@ -37,19 +37,13 @@ istream& operator>>(istream& in, Hitokoto_type& type) {
     return in;
 }
 
-Hitokoto::Hitokoto(time_t time, const string& content, Hitokoto_type type)
+Hitokoto::Hitokoto(const Time& time, const string& content, Hitokoto_type type)
 : m_time(time), m_content(content), m_type(type) {
-    hitokoto_map.insert({m_time, std::shared_ptr<Hitokoto>(this)});
-}
-
-Hitokoto::Hitokoto(tm& time, const string& content, Hitokoto_type type)
-: m_content(content), m_type(type) {
-    m_time = mktime(&time);
-    hitokoto_map.insert({m_time, std::shared_ptr<Hitokoto>(this)});
+    hitokoto_map.insert({m_time.getTime(), std::shared_ptr<Hitokoto>(this)});
 }
 
 Hitokoto::~Hitokoto() {
-    auto ret = hitokoto_map.equal_range(m_time);
+    auto ret = hitokoto_map.equal_range(m_time.getTime());
     for (auto it = ret.first; it != ret.second ; ++it) {
         if (this == (*it).second.get()) {
             hitokoto_map.erase(it);
@@ -85,7 +79,7 @@ void Hitokoto::saveToFile(const string& path) {
 }
 
 ostream& operator<<(ostream& out, const Hitokoto& src) {
-    out << src.m_time << std::endl << src.m_type 
+    out << src.m_time.getTime() << std::endl << src.m_type 
         << std::endl << src.m_content;
     return out;
 }

@@ -1,40 +1,44 @@
-#include <exception>
 #include "Time.h"
+#include <ctime>
 
-unsigned int Time::max_year = 3000;
-unsigned int Time::min_year = 1970;
-
-Time::Time(time_t time) {
-    setTime(time);
-}
-
-Time::Time(tm& time) {
-    setTime(time);
-}
-
-void Time::setTime(time_t time) {
-    if (isValid(time)) {
-        m_time = time;
+void Time::setTime(unsigned int Hour, unsigned int Minute, unsigned int Second) {
+    if (isValid(Hour, Minute, Second)) {
+        m_Hour = Hour;
+        m_Minute = Minute;
+        m_Second = Second;
     }
 }
 
-void Time::setTime(tm& time) {
-    if (isValid(time)) {
-        m_time = mktime(&time);
+Time::Time(unsigned int Hour, unsigned int Minute, unsigned int Second)
+: Hour(m_Hour), Minute(m_Minute), Second(m_Second) {
+    setTime(Hour, Minute, Second);
+}
+
+Time::Time()
+: Hour(m_Hour), Minute(m_Minute), Second(m_Second) {
+    setTime(0, 0, 0);
+}
+
+Time::Time(const Time& src)
+: Hour(m_Hour), Minute(m_Minute), Second(m_Second) {
+    setTime(src.Hour, src.Minute, src.Second);
+}
+
+Time& Time::operator=(const Time& src) {
+    if (this != &src) {
+        m_Hour = src.Hour;
+        m_Minute = src.Minute;
+        m_Second = src.Second;
     }
+    return *this;
 }
 
-bool Time::isValid(tm& time) {
-    if (time.tm_year < min_year || time.tm_year > max_year) {return false;}
-    if (time.tm_mon < 1 || time.tm_mon > 12) {return false;}
-    unsigned int day_of_month[] = {31,28,31,30,31,30,31,31,30,31,30,31};
-    if (isLeapYear(time.tm_year)) {day_of_month[2-1]++;} //leap time.tm_year
-    if (time.tm_mday < 1 || time.tm_mday > day_of_month[time.tm_mon - 1]) {return false;}
-}
+Time::~Time() {}
 
-bool Time::isValid
-(unsigned int year, unsigned int mon, unsigned int mday,
-unsigned int hour, unsigned int min, unsigned int sec) {
+Time Time::now() {
+    time_t time_stamp;
+    time(&time_stamp);
+    tm* time = localtime(&time_stamp);
 
-    
+    return Time(time->tm_hour, time->tm_min, time->tm_sec);
 }

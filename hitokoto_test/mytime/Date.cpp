@@ -53,7 +53,7 @@ void Date::ChangeYearRange(const unsigned int min, const unsigned int max) {
  */
 void Date::ChangeDefaultDate(const unsigned int year, const unsigned int month,
                         const unsigned int date) {                                    
-    if (Date::IsValidDate(year, month, date)) {
+    if (Date::isValid(year, month, date)) {
         Date::_default_year = year;
         Date::_default_month = month;
         Date::_default_date = date;
@@ -65,7 +65,8 @@ void Date::ChangeDefaultDate(const unsigned int year, const unsigned int month,
  * 
  * @exception Dexcept y/m/d out of range
  */
-bool Date::IsValidDate(const unsigned int year, const unsigned int month,
+/*
+bool Date::isValid(const unsigned int year, const unsigned int month,
                         const unsigned int date) {
     Date_exception Dexcept;
     if (year < min_year || year > max_year) {
@@ -75,7 +76,7 @@ bool Date::IsValidDate(const unsigned int year, const unsigned int month,
         Dexcept.Add("error: Month out of range.\n");
     }
     unsigned int day_of_month[] = {31,28,31,30,31,30,31,31,30,31,30,31};
-    if (IsLeapYear(year)) {day_of_month[2-1]++;}//leap year
+    if (isLeapYear(year)) {day_of_month[2-1]++;}//leap year
     if (month < 1 || month > 12) {
         //jmp
     }
@@ -88,6 +89,7 @@ bool Date::IsValidDate(const unsigned int year, const unsigned int month,
         return true;
     }
 }
+*/
 
 /**
  * @brief Verify date validity
@@ -95,11 +97,11 @@ bool Date::IsValidDate(const unsigned int year, const unsigned int month,
  * @retval true: Valid date
  * @retval false: Invalid date
  */
-bool Date::IsValidDate() {
+bool Date::isValid() {
     if (year < min_year || year > max_year) {return false;}
     if (month < 1 || month > 12) {return false;}
     unsigned int day_of_month[] = {31,28,31,30,31,30,31,31,30,31,30,31};
-    if (IsLeapYear(year)) {day_of_month[2-1]++;} //leap year
+    if (isLeapYear(year)) {day_of_month[2-1]++;} //leap year
     if (date < 1 || date > day_of_month[month - 1]) {return false;}
     
     return true;
@@ -112,9 +114,6 @@ bool Date::IsValidDate() {
  * @retval true: Is leap year 
  * @retval false: Isn't leap year
  */
-inline bool Date::IsLeapYear(const unsigned int year) {
-    return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
-}
 
 /**
  * @brief Default constructor of Date object
@@ -171,7 +170,7 @@ Date& Date::operator=(const Date& src) {
 void Date::SetDate(const unsigned int set_year,
                   const unsigned int set_month,
                   const unsigned int set_date) {
-    if (IsValidDate(set_year, set_month, set_date)) {
+    if (isValid(set_year, set_month, set_date)) {
         _year = set_year;
         _month = set_month;
         _date = set_date;

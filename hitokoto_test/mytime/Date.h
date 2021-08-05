@@ -39,10 +39,10 @@ public:
     static void ChangeYearRange(const unsigned int min, const unsigned int max);
     static void ChangeDefaultDate(const unsigned int year, const unsigned int month,
                                   const unsigned int date);
-    static bool IsValidDate(const unsigned int year, const unsigned int month,
+    static bool isValid(const unsigned int year, const unsigned int month,
                             const unsigned int date); //verify date validity
-    bool IsValidDate();
-    inline static bool IsLeapYear(const unsigned int year); //verify leap year
+    bool isValid();
+    inline static bool isLeapYear(const unsigned int year); //verify leap year
 
     /**
      * @brief Exception class for Date object
@@ -68,4 +68,8 @@ private:
     unsigned int _month;
     unsigned int _date;
 };
+
+inline bool Date::isLeapYear(const unsigned int year) {
+    return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
+}
 #endif
