@@ -85,6 +85,10 @@ void User::saveToFile(const string& path) {
     }
 }
 
+void User::setDefaultPath(const string &path) {
+    default_path = path;
+}
+
 void User::changePwd(const string& plain) {
     cipher_pwd.update(plain);
 }
@@ -116,11 +120,15 @@ ostream& operator<<(ostream& out, const User& src) {
 }
 
 User::Service::Service() {
+#ifdef AutoLoadUsrList
     User::loadFromFile(default_path);
+#endif
 }
 
 User::Service::~Service() {
+#ifdef AutoSaveUsrList
     User::saveToFile(default_path);
+#endif
     for (auto it = user_map.begin(); it != user_map.end();) {
         delete (*(it++)).second;
     }

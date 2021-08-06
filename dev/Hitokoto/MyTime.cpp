@@ -1,6 +1,6 @@
 #include <exception>
 #include <stdexcept>
-#include "Time.h"
+#include "MyTime.h"
 
 unsigned int Time::max_year = 3000;
 unsigned int Time::min_year = 1970;
@@ -79,6 +79,8 @@ unsigned int hour, unsigned int min, unsigned int sec)
     if (isLeapYear(year)) {++day_of_month[2-1];}//leap year
 
     if (mday < 1 || mday > day_of_month[mon - 1]) { return false;}
+
+    if(hour < 0 || hour > 23 || min < 0 || min > 59 || sec < 0 || sec > 60) {return false;}
 
     return true;
 }

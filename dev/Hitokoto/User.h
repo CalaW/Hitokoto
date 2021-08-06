@@ -10,6 +10,9 @@
 #include "EncryptStrategy.h"
 #include "Cipher.h"
 
+#undef AutoLoadUsrList
+#define AutoSaveUsrList
+
 using std::string;
 using std::map;
 using std::ostream;
@@ -17,8 +20,9 @@ using std::ostream;
 class User {
 public:
     static User* verify(const string& name, const string& pwd);
-    static void loadFromFile(const string& path);
-    static void saveToFile(const string& path);
+    static void loadFromFile(const string& path = default_path);
+    static void saveToFile(const string& path = default_path);
+    static void setDefaultPath(const string& path);
 
     inline const string& getName() const {return name;}
     virtual bool isAdmin() const = 0;

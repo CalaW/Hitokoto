@@ -12,3 +12,7 @@ using std::string;
 string Md5Strategy::encrypt(const string& src) {
     return MD5(src).hexdigest();
 }
+
+EncryptStrategy::~EncryptStrategy() {}
+
+Md5Strategy::~Md5Strategy() {}

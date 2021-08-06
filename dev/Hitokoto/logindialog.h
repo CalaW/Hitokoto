@@ -17,8 +17,12 @@ public:
     ~LoginDialog();
     User* getLoginUserPtr();
 
+signals:
+    void loginSuccess(User*);
+
 private slots:
     void on_LoginButton_clicked();
+    void mainLogout();
 
 private:
     Ui::LoginDialog *ui;

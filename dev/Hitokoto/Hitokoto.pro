@@ -9,6 +9,7 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    MyTime.cpp \
     logincontroller.cpp \
     logindialog.cpp \
     main.cpp \
@@ -18,11 +19,11 @@ SOURCES += \
     EncryptStrategy.cpp \
     Hitokoto.cpp \
     Md5.cpp \
-    Time.cpp \
     TrivialUser.cpp \
     User.cpp
 
 HEADERS += \
+    MyTime.h \
     logincontroller.h \
     logindialog.h \
     mainwindow.h \
@@ -31,7 +32,6 @@ HEADERS += \
     EncryptStrategy.h \
     Hitokoto.h \
     Md5.h \
-    Time.h \
     TrivialUser.h \
     User.h
 
@@ -43,3 +43,5 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES +=

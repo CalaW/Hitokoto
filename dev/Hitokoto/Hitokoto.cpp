@@ -88,11 +88,11 @@ ostream& operator<<(ostream& out, const Hitokoto& src) {
 }
 
 Hitokoto::Service::Service() {
-    Hitokoto::loadFromFile(default_path);
+//    Hitokoto::loadFromFile(default_path);
 }
 
 Hitokoto::Service::~Service() {
-    Hitokoto::saveToFile(default_path);
+//    Hitokoto::saveToFile(default_path);
     for (auto it = hitokoto_map.begin(); it != hitokoto_map.end();) {
         delete (*(it++)).second; //avoid iterator invalidity
     }

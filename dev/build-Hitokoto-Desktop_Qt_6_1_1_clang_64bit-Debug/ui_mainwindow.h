@@ -14,6 +14,7 @@
 #include <QtWidgets/QCalendarWidget>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QWidget>
 
@@ -24,6 +25,7 @@ class Ui_MainWindow
 public:
     QWidget *centralwidget;
     QCalendarWidget *calendarWidget;
+    QPushButton *logoutBtn;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -37,6 +39,9 @@ public:
         calendarWidget = new QCalendarWidget(centralwidget);
         calendarWidget->setObjectName(QString::fromUtf8("calendarWidget"));
         calendarWidget->setGeometry(QRect(190, 100, 304, 173));
+        logoutBtn = new QPushButton(centralwidget);
+        logoutBtn->setObjectName(QString::fromUtf8("logoutBtn"));
+        logoutBtn->setGeometry(QRect(270, 330, 113, 32));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -54,6 +59,7 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
+        logoutBtn->setText(QCoreApplication::translate("MainWindow", "Logout", nullptr));
     } // retranslateUi
 
 };
