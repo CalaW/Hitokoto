@@ -7,8 +7,6 @@ using std::cout;
 
 int main()
 {
-    Hitokoto::loadFromFile("hitokoto.txt");
-
     new Hitokoto(Time::now(), "currenttime", Hitokoto_type::thought);
     Hitokoto::saveToFile("hitokoto.txt");
 
@@ -18,9 +16,8 @@ int main()
     Hitokoto_type type;
     cin >> type;
     new Hitokoto(temptime, "Hello world", type);
-    Hitokoto::saveToFile("hitokoto.txt");
 
-    Hitokoto(temptime, "wht", Hitokoto_type::word);
+    // Hitokoto(temptime, "wht", Hitokoto_type::word);
     // while (true) {
     //     string operation;
     //     cin >> operation;
@@ -29,6 +26,5 @@ int main()
     //     Hitokoto::saveToFile("operation.txt");
     // }
 
-    Hitokoto::saveToFile("hitokoto.txt");
     return 0;
 }

@@ -7,7 +7,9 @@ using std::multimap;
 using std::istream;
 using std::ostream;
 
-multimap<time_t, shared_ptr<Hitokoto>> Hitokoto::hitokoto_map {};
+multimap<time_t, Hitokoto*> Hitokoto::hitokoto_map {};
+
+Hitokoto::Service Hitokoto::service {};
 
 ostream& operator<<(ostream& out, const Hitokoto_type type) {
     switch (type) {
@@ -39,13 +41,13 @@ istream& operator>>(istream& in, Hitokoto_type& type) {
 
 Hitokoto::Hitokoto(const Time& time, const string& content, Hitokoto_type type)
 : m_time(time), m_content(content), m_type(type) {
-    hitokoto_map.insert({m_time.getTime(), std::shared_ptr<Hitokoto>(this)});
+    hitokoto_map.insert({m_time.getTime(), this});
 }
 
 Hitokoto::~Hitokoto() {
     auto ret = hitokoto_map.equal_range(m_time.getTime());
     for (auto it = ret.first; it != ret.second ; ++it) {
-        if (this == (*it).second.get()) {
+        if (this == (*it).second) {
             hitokoto_map.erase(it);
             break;
         }
@@ -74,7 +76,7 @@ void Hitokoto::saveToFile(const string& path) {
         throw std::invalid_argument("Cannot create file \"" + path + "\"");
     }
     for (const auto& it : hitokoto_map) {
-        hitokoto_file << *it.second.get() << std::endl;
+        hitokoto_file << *it.second << std::endl;
     }
 }
 
@@ -82,4 +84,15 @@ ostream& operator<<(ostream& out, const Hitokoto& src) {
     out << src.m_time.getTime() << std::endl << src.m_type 
         << std::endl << src.m_content;
     return out;
+}
+
+Hitokoto::Service::Service() {
+    Hitokoto::loadFromFile("hitokoto.txt");
+}
+
+Hitokoto::Service::~Service() {
+    Hitokoto::saveToFile("hitokoto.txt");
+    for (auto it = hitokoto_map.begin(); it != hitokoto_map.end();) {
+        delete (*(it++)).second; //avoid iterator invalidity
+    }
 }

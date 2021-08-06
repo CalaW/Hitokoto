@@ -43,9 +43,15 @@ private:
     string m_content;
     Hitokoto_type m_type;
 
-    static multimap<time_t, shared_ptr<Hitokoto>> hitokoto_map;
+    static multimap<time_t, Hitokoto*> hitokoto_map;
 
     friend ostream& operator<<(ostream& out, const Hitokoto& src);
+
+    static class Service {
+    public:
+        Service();
+        ~Service();
+    } service;
 };
 
 #endif /* HITOKOTO_H */
