@@ -58,11 +58,11 @@ void Hitokoto::loadFromFile(const string& path) {
         throw std::invalid_argument("Cannot open file \"" + path + "\"");
     }
     while (hitokoto_file.peek() != EOF) {
-        time_t time;
+        Time time;
         string content;
         Hitokoto_type type;
-        hitokoto_file >> time;
-        hitokoto_file >> type;
+        hitokoto_file >> std::ws >> time;
+        hitokoto_file >> std::ws >> type >> std::ws;
         std::getline(hitokoto_file, content);
         new Hitokoto(time, content, type);
     }
