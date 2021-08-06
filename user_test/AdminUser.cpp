@@ -12,17 +12,9 @@ AdminUser::AdminUser(const string& pwd) //TODO template
 AdminUser::AdminUser(const Cipher& cipher_pwd)
 : User("Admin", cipher_pwd) {}
 
-void AdminUser::addTrivialUser(const string& usrname, const string& pwd) {
-    if (this->isAdmin()) { //must called by an admin user
-        new TrivialUser(usrname, pwd);
-    } else {
-        throw std::invalid_argument("Permission denied!");
-    }
-}
-
-void AdminUser::addAdminUser(const string& cipher_pwd) { //TODO template
+void AdminUser::addAdminUser(const string& pwd) { //TODO template
     if (instance == nullptr) {
-        instance = new AdminUser(cipher_pwd);
+        instance = new AdminUser(pwd);
     } else {
         throw std::invalid_argument("Two admin cannot exist at the same time!");
     }
@@ -37,5 +29,10 @@ void AdminUser::addAdminUser(const Cipher& cipher_pwd) {
 }
 
 AdminUser::~AdminUser() {
-    if (instance) {delete instance;}
+    // only can be called by delete instance
+    if (instance == nullptr) {
+        addAdminUser();
+        //should not happen
+        //removed from user_map by User destructor
+    }
 }

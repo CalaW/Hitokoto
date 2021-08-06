@@ -11,10 +11,9 @@ public:
     AdminUser(const AdminUser&) = delete;
     AdminUser& operator=(const AdminUser&) = delete;
     bool isAdmin() const override;
-    void addTrivialUser(const string& usrname, const string& pwd);
     static void addAdminUser(const string& pwd = default_pwd);
     static void addAdminUser(const Cipher& pwd);
-    ~AdminUser();
+    ~AdminUser() override;
 private:
     static string default_pwd;
     static AdminUser* instance;

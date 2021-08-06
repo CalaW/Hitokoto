@@ -12,8 +12,10 @@ using std::string;
 using std::ostream;
 
 map<string, User*> User::user_map{};
-
+string User::default_path = "user.txt";
 const std::shared_ptr<EncryptStrategy> User::encrypt_str(new Md5Strategy());
+
+User::Service User::service {};
 
 User* User::verify(const string& name, const string& pwd) {
     auto it = user_map.find(name);
@@ -47,6 +49,9 @@ User::User(const string& usrname, const Cipher& pwd)
     }
 }
 
+User::~User() {
+    user_map.erase(name);
+}
 
 void User::loadFromFile(const string& path) {
     std::ifstream user_file(path);
@@ -84,7 +89,39 @@ void User::changePwd(const string& plain) {
     cipher_pwd.update(plain);
 }
 
+void User::addTrivialUser(const string& usrname, const string& pwd) {
+    if (this->isAdmin()) { //must called by an admin user
+        new TrivialUser(usrname, pwd);
+    } else {
+        throw std::invalid_argument("Permission denied!");
+    }
+}
+
+void User::deleteTrivialUser(const string& usrname) {
+    if (this->isAdmin()) {
+        auto it = user_map.find(usrname);
+        if (it == user_map.end()) {
+            throw std::invalid_argument("User \"" + usrname + "\" does not exist");
+        } else {
+            delete (*it).second;
+        }
+    } else {
+        throw std::invalid_argument("Permission denied!");
+    }
+}
+
 ostream& operator<<(ostream& out, const User& src) {
     out << src.name << "\n" << src.cipher_pwd << std::endl;
     return out;
+}
+
+User::Service::Service() {
+    User::loadFromFile(default_path);
+}
+
+User::Service::~Service() {
+    User::saveToFile(default_path);
+    for (auto it = user_map.begin(); it != user_map.end();) {
+        delete (*(it++)).second;
+    }
 }

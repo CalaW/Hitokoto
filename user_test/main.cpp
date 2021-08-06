@@ -5,7 +5,6 @@
 
 int main()
 {
-    User::loadFromFile("user.txt");
     User* current_usr;
     // try {
     //     current_usr = User::verify("Admin", "Admin");
@@ -45,11 +44,14 @@ int main()
                 std::cout << current_usr->getName() << " login success!" << std::endl;
             } else if (operation == "quit") {
                 break;
-            } else if (current_usr != nullptr) {
+            }else if (operation == "save") {
+                User::saveToFile("user.txt");
+            }
+            if (current_usr != nullptr) {
                 if (operation == "add") {
                     string name, pwd;
                     std::cin >> name >> pwd;
-                    static_cast<AdminUser*>(current_usr)->addTrivialUser(name, pwd);
+                    current_usr->addTrivialUser(name, pwd);
                     std::cout << current_usr->getName() << " add user " << name << std::endl;
                 } else if (operation == "changePwd") {
                     string pwd;
@@ -59,6 +61,10 @@ int main()
                 } else if (operation == "logout") {
                     std::cout << current_usr->getName() << " log out" << std::endl;
                     current_usr = nullptr;
+                } else if (operation == "delete") {
+                    string name;
+                    std::cin >> name;
+                    current_usr->deleteTrivialUser(name);
                 }
             } else {
                 throw std::invalid_argument("Please login!");
@@ -70,9 +76,6 @@ int main()
         }
         
     }
-
-
-    User::saveToFile("user.txt");
 
     return 0;
 }

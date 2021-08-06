@@ -23,6 +23,9 @@ public:
     inline const string& getName() const {return name;}
     virtual bool isAdmin() const = 0;
     void changePwd(const string& plain);
+    void addTrivialUser(const string& usrname, const string& pwd);
+    void deleteTrivialUser(const string& usrname);
+    virtual ~User();
     friend ostream& operator<<(ostream& out, const User& src);
 
     static const std::shared_ptr<EncryptStrategy> encrypt_str;
@@ -34,6 +37,12 @@ private:
     string name;
     Cipher cipher_pwd;
     static map<string, User*> user_map;
+    static string default_path;
+    static class Service {
+    public:
+        Service();
+        ~Service();
+    } service;
 
     friend class AdminUser;
 };

@@ -12,6 +12,7 @@ public:
 private:
     TrivialUser(const string& name, const string& pwd);
     TrivialUser(const string& name, const Cipher& pwd);
+    ~TrivialUser() override;
 
     friend class AdminUser;
     friend class User;
