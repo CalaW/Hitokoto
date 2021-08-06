@@ -44,6 +44,7 @@ private:
     Hitokoto_type m_type;
 
     static multimap<time_t, Hitokoto*> hitokoto_map;
+    static string default_path;
 
     friend ostream& operator<<(ostream& out, const Hitokoto& src);
 

@@ -8,6 +8,7 @@ using std::istream;
 using std::ostream;
 
 multimap<time_t, Hitokoto*> Hitokoto::hitokoto_map {};
+string default_path = "hitokoto.txt";
 
 Hitokoto::Service Hitokoto::service {};
 
@@ -87,11 +88,11 @@ ostream& operator<<(ostream& out, const Hitokoto& src) {
 }
 
 Hitokoto::Service::Service() {
-    Hitokoto::loadFromFile("hitokoto.txt");
+    Hitokoto::loadFromFile(default_path);
 }
 
 Hitokoto::Service::~Service() {
-    Hitokoto::saveToFile("hitokoto.txt");
+    Hitokoto::saveToFile(default_path);
     for (auto it = hitokoto_map.begin(); it != hitokoto_map.end();) {
         delete (*(it++)).second; //avoid iterator invalidity
     }
