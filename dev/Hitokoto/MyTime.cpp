@@ -4,6 +4,7 @@
 
 unsigned int Time::max_year = 3000;
 unsigned int Time::min_year = 1970;
+string Time::default_format = "%Ex %EX";
 
 Time::Time() {
     setTime(0);
@@ -54,6 +55,12 @@ void Time::setTime(unsigned int year, unsigned int mon, unsigned int mday,
     } else {
         throw std::invalid_argument("time invalid!");
     }
+}
+
+string Time::getTimeString(const string &format) const {
+    char temp[100] = {0};
+    strftime(temp, 100, format.c_str(), localtime(&m_time));
+    return string(temp);
 }
 
 Time Time::now() {

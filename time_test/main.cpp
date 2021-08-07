@@ -6,7 +6,7 @@ using namespace std;
 int main()
 {
     Time mtime = Time::now();
-    cout << mtime << mtime.getTime() << endl;
+    cout << mtime.getTimeString() << mtime.getTime() << endl;
     cin >> mtime;
     cout << mtime << mtime.getTime() << endl;
 

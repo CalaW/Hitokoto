@@ -1,8 +1,12 @@
 #include "maincontroller.h"
+#include "Hitokoto.h"
+#include <QApplication>
+#include <QMessageBox>
 
 MainController::MainController()
 {
-
+    Hitokoto::setDefaultPath(QApplication::applicationDirPath().toStdString() + "/../../../resource/hitokoto.txt");
+    Hitokoto::loadFromFile();
 }
 
 QString MainController::getUserName() {
@@ -23,4 +27,11 @@ bool MainController::isLogined() const {
 
 bool MainController::isAdminLogined() const {
     return isLogined() && current_user->isAdmin();
+}
+
+void MainController::addUser(const QString &name, const QString &pwd) {
+    try {
+        current_user->addTrivialUser(name.toStdString(), pwd.toStdString());
+    } catch (std::exception e) {
+    } //TODO
 }

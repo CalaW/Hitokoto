@@ -7,8 +7,10 @@ using std::multimap;
 using std::istream;
 using std::ostream;
 
-multimap<time_t, Hitokoto*> Hitokoto::hitokoto_map {};
-string default_path = "hitokoto.txt";
+//multimap<time_t, Hitokoto*> Hitokoto::hitokoto_map {};
+multimap<time_t, Hitokoto*, std::greater<time_t>> Hitokoto::hitokoto_map {};
+string Hitokoto::default_path = "hitokoto.txt";
+string Hitokoto::time_format = "%Ex %EX";
 
 Hitokoto::Service Hitokoto::service {};
 
@@ -55,6 +57,17 @@ Hitokoto::~Hitokoto() {
     }
 }
 
+string Hitokoto::getTypeString() const {
+    switch (m_type) {
+    case Hitokoto_type::word:
+        return "word";
+    case Hitokoto_type::action:
+        return "action";
+    case Hitokoto_type::thought:
+        return "thought";
+    }
+}
+
 void Hitokoto::loadFromFile(const string& path) {
     std::ifstream hitokoto_file(path);
     if (!hitokoto_file.is_open()) {
@@ -81,18 +94,43 @@ void Hitokoto::saveToFile(const string& path) {
     }
 }
 
+void Hitokoto::setDefaultPath(const string &path) {
+    default_path = path;
+}
+multimap<time_t, Hitokoto*>::const_iterator Hitokoto::cbegin() {
+    return hitokoto_map.cbegin();
+}
+multimap<time_t, Hitokoto*>::const_iterator Hitokoto::cend() {
+    return hitokoto_map.cend();
+}
+multimap<time_t, Hitokoto*>::const_iterator Hitokoto::upper_bound(time_t time) {
+    return hitokoto_map.upper_bound(time);
+}
+
+multimap<time_t, Hitokoto*>::const_iterator Hitokoto::lower_bound(time_t time) {
+    return hitokoto_map.lower_bound(time);
+}
+
+size_t Hitokoto::size() {
+    return hitokoto_map.size();
+}
+
 ostream& operator<<(ostream& out, const Hitokoto& src) {
-    out << src.m_time.getTime() << std::endl << src.m_type 
+    out << src.m_time.getTime() << std::endl << src.m_type
         << std::endl << src.m_content;
     return out;
 }
 
 Hitokoto::Service::Service() {
-//    Hitokoto::loadFromFile(default_path);
+#ifdef AutoLoadHitoList
+    Hitokoto::loadFromFile(default_path);
+#endif
 }
 
 Hitokoto::Service::~Service() {
-//    Hitokoto::saveToFile(default_path);
+#ifdef AutoSaveHitoList
+    Hitokoto::saveToFile(default_path);
+#endif
     for (auto it = hitokoto_map.begin(); it != hitokoto_map.end();) {
         delete (*(it++)).second; //avoid iterator invalidity
     }

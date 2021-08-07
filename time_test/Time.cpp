@@ -4,6 +4,7 @@
 
 unsigned int Time::max_year = 3000;
 unsigned int Time::min_year = 1970;
+string Time::default_format = "%Ex %EX";
 
 Time::Time() {
     setTime(0);
@@ -56,6 +57,12 @@ void Time::setTime(unsigned int year, unsigned int mon, unsigned int mday,
     }
 }
 
+string Time::getTimeString(const string &format) const {
+    char temp[100] = {0};
+    strftime(temp, 100, format.c_str(), localtime(&m_time));
+    return string(temp);
+}
+
 Time Time::now() {
     time_t time_stamp;
     time(&time_stamp);
@@ -79,6 +86,8 @@ unsigned int hour, unsigned int min, unsigned int sec)
     if (isLeapYear(year)) {++day_of_month[2-1];}//leap year
 
     if (mday < 1 || mday > day_of_month[mon - 1]) { return false;}
+
+    if(hour < 0 || hour > 23 || min < 0 || min > 59 || sec < 0 || sec > 60) {return false;}
 
     return true;
 }

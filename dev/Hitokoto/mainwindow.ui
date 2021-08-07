@@ -13,12 +13,15 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="tabShape">
+   <enum>QTabWidget::Rounded</enum>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>90</x>
-      <y>350</y>
+      <x>210</x>
+      <y>360</y>
       <width>581</width>
       <height>221</height>
      </rect>
@@ -37,6 +40,9 @@
     <property name="textFormat">
      <enum>Qt::RichText</enum>
     </property>
+    <property name="scaledContents">
+     <bool>false</bool>
+    </property>
     <property name="textInteractionFlags">
      <set>Qt::NoTextInteraction</set>
     </property>
@@ -44,17 +50,23 @@
    <widget class="QLabel" name="welcomeLabel">
     <property name="geometry">
      <rect>
-      <x>630</x>
-      <y>20</y>
-      <width>121</width>
-      <height>21</height>
+      <x>440</x>
+      <y>0</y>
+      <width>321</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="text">
-     <string>好久不见，</string>
+     <string>Welcome,</string>
+    </property>
+    <property name="textFormat">
+     <enum>Qt::RichText</enum>
     </property>
    </widget>
    <widget class="QTableView" name="tableView">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>40</x>
@@ -63,95 +75,208 @@
       <height>351</height>
      </rect>
     </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <property name="editTriggers">
+     <set>QAbstractItemView::NoEditTriggers</set>
+    </property>
+    <property name="selectionMode">
+     <enum>QAbstractItemView::ExtendedSelection</enum>
+    </property>
+    <property name="selectionBehavior">
+     <enum>QAbstractItemView::SelectRows</enum>
+    </property>
+    <property name="showGrid">
+     <bool>false</bool>
+    </property>
+    <attribute name="horizontalHeaderVisible">
+     <bool>false</bool>
+    </attribute>
+    <attribute name="horizontalHeaderCascadingSectionResizes">
+     <bool>false</bool>
+    </attribute>
+    <attribute name="horizontalHeaderHighlightSections">
+     <bool>false</bool>
+    </attribute>
+    <attribute name="horizontalHeaderStretchLastSection">
+     <bool>true</bool>
+    </attribute>
+    <attribute name="verticalHeaderVisible">
+     <bool>false</bool>
+    </attribute>
+    <attribute name="verticalHeaderCascadingSectionResizes">
+     <bool>false</bool>
+    </attribute>
+    <attribute name="verticalHeaderStretchLastSection">
+     <bool>false</bool>
+    </attribute>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>580</x>
-      <y>70</y>
-      <width>186</width>
-      <height>227</height>
+      <x>590</x>
+      <y>90</y>
+      <width>205</width>
+      <height>218</height>
      </rect>
     </property>
-    <layout class="QVBoxLayout" name="mainPannelLay">
+    <layout class="QVBoxLayout" name="viewOptionLay">
      <item>
-      <layout class="QVBoxLayout" name="buttonLay">
-       <item>
-        <widget class="QPushButton" name="logioBtn">
-         <property name="text">
-          <string>Login</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="newBtn">
-         <property name="text">
-          <string>new Hitokoto</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="adManageBtn">
-         <property name="text">
-          <string>Manage User</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="adDelHitoBtn">
-         <property name="text">
-          <string>Delete Hitokoto</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
+      <widget class="QPushButton" name="logioBtn">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="text">
+        <string>Login</string>
+       </property>
+       <property name="checkable">
+        <bool>false</bool>
+       </property>
+       <property name="autoDefault">
+        <bool>true</bool>
+       </property>
+       <property name="default">
+        <bool>false</bool>
+       </property>
+       <property name="flat">
+        <bool>false</bool>
+       </property>
+      </widget>
      </item>
      <item>
-      <layout class="QVBoxLayout" name="viewOptionLay">
-       <item>
-        <widget class="QCheckBox" name="timeRangeCheck">
-         <property name="text">
-          <string>按时间范围查看</string>
+      <widget class="QPushButton" name="newBtn">
+       <property name="text">
+        <string>Publish Hitokoto</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="adDelHitoBtn">
+       <property name="text">
+        <string>Delete Hitokoto</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="adManageBtn">
+       <property name="text">
+        <string>Add User</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="timeRangeCheck">
+       <property name="text">
+        <string>View by Time Range</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <layout class="QGridLayout" name="timeEdtLay">
+       <item row="0" column="1">
+        <widget class="QDateTimeEdit" name="fromTimeEdt">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="dateTime">
+          <datetime>
+           <hour>0</hour>
+           <minute>0</minute>
+           <second>0</second>
+           <year>1970</year>
+           <month>1</month>
+           <day>1</day>
+          </datetime>
+         </property>
+         <property name="date">
+          <date>
+           <year>1970</year>
+           <month>1</month>
+           <day>1</day>
+          </date>
+         </property>
+         <property name="maximumDateTime">
+          <datetime>
+           <hour>23</hour>
+           <minute>59</minute>
+           <second>59</second>
+           <year>3000</year>
+           <month>12</month>
+           <day>31</day>
+          </datetime>
+         </property>
+         <property name="minimumDateTime">
+          <datetime>
+           <hour>0</hour>
+           <minute>0</minute>
+           <second>0</second>
+           <year>1970</year>
+           <month>1</month>
+           <day>1</day>
+          </datetime>
          </property>
         </widget>
        </item>
-       <item>
-        <layout class="QGridLayout" name="timeEdtLay">
-         <item row="0" column="1">
-          <widget class="QDateTimeEdit" name="fromTimeEdt"/>
-         </item>
-         <item row="0" column="0">
-          <widget class="QLabel" name="fromLabel">
-           <property name="text">
-            <string>从</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="1">
-          <widget class="QDateTimeEdit" name="toTimeEdt"/>
-         </item>
-         <item row="1" column="0">
-          <widget class="QLabel" name="toLabel">
-           <property name="text">
-            <string>到</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
+       <item row="1" column="1">
+        <widget class="QDateTimeEdit" name="toTimeEdt">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="dateTime">
+          <datetime>
+           <hour>23</hour>
+           <minute>59</minute>
+           <second>59</second>
+           <year>3000</year>
+           <month>12</month>
+           <day>31</day>
+          </datetime>
+         </property>
+         <property name="maximumDateTime">
+          <datetime>
+           <hour>23</hour>
+           <minute>59</minute>
+           <second>59</second>
+           <year>3000</year>
+           <month>12</month>
+           <day>31</day>
+          </datetime>
+         </property>
+         <property name="minimumDateTime">
+          <datetime>
+           <hour>0</hour>
+           <minute>0</minute>
+           <second>0</second>
+           <year>1970</year>
+           <month>9</month>
+           <day>14</day>
+          </datetime>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="toLabel">
+         <property name="text">
+          <string>To</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="fromLabel">
+         <property name="text">
+          <string>From</string>
+         </property>
+        </widget>
        </item>
       </layout>
      </item>
     </layout>
    </widget>
+   <zorder>layoutWidget</zorder>
    <zorder>label</zorder>
-   <zorder>logioBtn</zorder>
-   <zorder>newBtn</zorder>
    <zorder>welcomeLabel</zorder>
    <zorder>tableView</zorder>
-   <zorder>adManageBtn</zorder>
-   <zorder>fromTimeEdt</zorder>
-   <zorder>toTimeEdt</zorder>
-   <zorder>toLabel</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

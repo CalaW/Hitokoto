@@ -6,6 +6,7 @@
 
 using std::ostream;
 using std::istream;
+using std::string;
 
 class Time {
 public:
@@ -17,6 +18,7 @@ public:
     inline time_t getTime() const {return m_time;}
     inline tm& getLocalTime() const {return *localtime(&m_time);}
     inline tm& getUTCTime() const {return *gmtime(&m_time);}
+    string getTimeString(const string& format = default_format) const;
     void setTime(time_t time);
     void setTime(tm& time);
     void setTime(unsigned int year, unsigned int mon, unsigned int mday,
@@ -36,6 +38,7 @@ private:
 
     static unsigned int max_year;
     static unsigned int min_year;
+    static string default_format;
 };
 
 inline bool Time::isLeapYear(const unsigned int year) {

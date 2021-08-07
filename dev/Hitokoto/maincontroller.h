@@ -12,6 +12,7 @@ public:
     void setUserPtr(User* user);
     bool isLogined() const;
     bool isAdminLogined() const;
+    void addUser(const QString& name, const QString& pwd);
 private:
     User* current_user;
 };

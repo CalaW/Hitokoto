@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "logindialog.h"
+#include "adnewuserdialog.h"
 #include <QApplication>
 
 int main(int argc, char *argv[])

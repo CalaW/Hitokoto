@@ -10,7 +10,10 @@ CONFIG += c++11
 
 SOURCES += \
     MyTime.cpp \
-    admincontroller.cpp \
+    adnewuserdialog.cpp \
+    adusermandialog.cpp \
+    dialognewhito.cpp \
+    hitotablecontroller.cpp \
     logincontroller.cpp \
     logindialog.cpp \
     main.cpp \
@@ -22,11 +25,15 @@ SOURCES += \
     Hitokoto.cpp \
     Md5.cpp \
     TrivialUser.cpp \
-    User.cpp
+    User.cpp \
+    newhitocontroller.cpp
 
 HEADERS += \
     MyTime.h \
-    admincontroller.h \
+    adnewuserdialog.h \
+    adusermandialog.h \
+    dialognewhito.h \
+    hitotablecontroller.h \
     logincontroller.h \
     logindialog.h \
     maincontroller.h \
@@ -37,9 +44,13 @@ HEADERS += \
     Hitokoto.h \
     Md5.h \
     TrivialUser.h \
-    User.h
+    User.h \
+    newhitocontroller.h
 
 FORMS += \
+    adnewuserdialog.ui \
+    adusermandialog.ui \
+    dialognewhito.ui \
     logindialog.ui \
     mainwindow.ui
 
