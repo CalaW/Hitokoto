@@ -16,7 +16,7 @@ class LoginController
 public:
     LoginController();
     LoginResult Login(const QString& name, const QString& pwd);
-    User* getLoginUserPtr();
+    User* getLoginUserPtr() const;
 private:
     User* current_user;
 };

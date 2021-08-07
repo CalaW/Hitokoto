@@ -8,10 +8,10 @@ int main(int argc, char *argv[])
     MainWindow main_window;
     LoginDialog login_dialog;
 
-    login_dialog.show();
+    main_window.show();
 
-    QObject::connect(&login_dialog, SIGNAL(loginSuccess(User*)), &main_window, SLOT(loginDialogSuccess(User*)));
-    QObject::connect(&main_window, SIGNAL(userLogout()), &login_dialog, SLOT(mainLogout()));
+    QObject::connect(&login_dialog, SIGNAL(loginSuccess(LoginController)), &main_window, SLOT(loginDialogSuccess(LoginController)));
+    QObject::connect(&main_window, SIGNAL(mainLoginBtnClicked()), &login_dialog, SLOT(showLoginDialog()));
 
 
 //    if (login_dialog.exec() == QDialog::Accepted) {

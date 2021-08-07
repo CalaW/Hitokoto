@@ -28,6 +28,6 @@ LoginResult LoginController::Login(const QString& name, const QString& pwd) {
     }
 }
 
-User* LoginController::getLoginUserPtr() {
+User* LoginController::getLoginUserPtr() const {
     return current_user;
 }

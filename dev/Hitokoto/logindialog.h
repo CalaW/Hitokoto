@@ -18,11 +18,11 @@ public:
     User* getLoginUserPtr();
 
 signals:
-    void loginSuccess(User*);
+    void loginSuccess(const LoginController&);
 
 private slots:
     void on_LoginButton_clicked();
-    void mainLogout();
+    void showLoginDialog();
 
 private:
     Ui::LoginDialog *ui;

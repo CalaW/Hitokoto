@@ -14,29 +14,144 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QCalendarWidget" name="calendarWidget">
+   <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>190</x>
-      <y>100</y>
-      <width>304</width>
-      <height>173</height>
+      <x>90</x>
+      <y>350</y>
+      <width>581</width>
+      <height>221</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Source Han Serif SC</family>
+      <pointsize>80</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>&lt;div style=&quot;color:gray&quot;&gt;一言·一行·一念&lt;/div&gt;</string>
+    </property>
+    <property name="textFormat">
+     <enum>Qt::RichText</enum>
+    </property>
+    <property name="textInteractionFlags">
+     <set>Qt::NoTextInteraction</set>
+    </property>
    </widget>
-   <widget class="QPushButton" name="logoutBtn">
+   <widget class="QLabel" name="welcomeLabel">
     <property name="geometry">
      <rect>
-      <x>270</x>
-      <y>330</y>
-      <width>113</width>
-      <height>32</height>
+      <x>630</x>
+      <y>20</y>
+      <width>121</width>
+      <height>21</height>
      </rect>
     </property>
     <property name="text">
-     <string>Logout</string>
+     <string>好久不见，</string>
     </property>
    </widget>
+   <widget class="QTableView" name="tableView">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>60</y>
+      <width>541</width>
+      <height>351</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>580</x>
+      <y>70</y>
+      <width>186</width>
+      <height>227</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="mainPannelLay">
+     <item>
+      <layout class="QVBoxLayout" name="buttonLay">
+       <item>
+        <widget class="QPushButton" name="logioBtn">
+         <property name="text">
+          <string>Login</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="newBtn">
+         <property name="text">
+          <string>new Hitokoto</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="adManageBtn">
+         <property name="text">
+          <string>Manage User</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="adDelHitoBtn">
+         <property name="text">
+          <string>Delete Hitokoto</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="viewOptionLay">
+       <item>
+        <widget class="QCheckBox" name="timeRangeCheck">
+         <property name="text">
+          <string>按时间范围查看</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QGridLayout" name="timeEdtLay">
+         <item row="0" column="1">
+          <widget class="QDateTimeEdit" name="fromTimeEdt"/>
+         </item>
+         <item row="0" column="0">
+          <widget class="QLabel" name="fromLabel">
+           <property name="text">
+            <string>从</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QDateTimeEdit" name="toTimeEdt"/>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="toLabel">
+           <property name="text">
+            <string>到</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </widget>
+   <zorder>label</zorder>
+   <zorder>logioBtn</zorder>
+   <zorder>newBtn</zorder>
+   <zorder>welcomeLabel</zorder>
+   <zorder>tableView</zorder>
+   <zorder>adManageBtn</zorder>
+   <zorder>fromTimeEdt</zorder>
+   <zorder>toTimeEdt</zorder>
+   <zorder>toLabel</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 #include "User.h"
+#include "maincontroller.h"
+#include "logincontroller.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -17,13 +19,15 @@ public:
     ~MainWindow();
 
 signals:
+    void mainLoginBtnClicked();
     void userLogout();
 
 private slots:
-    void on_logoutBtn_clicked();
-    void loginDialogSuccess(User*);
+    void loginDialogSuccess(const LoginController&);
+    void on_logioBtn_clicked();
 
 private:
     Ui::MainWindow *ui;
+    MainController main_ctrl;
 };
 #endif // MAINWINDOW_H

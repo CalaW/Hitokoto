@@ -10,9 +10,11 @@ CONFIG += c++11
 
 SOURCES += \
     MyTime.cpp \
+    admincontroller.cpp \
     logincontroller.cpp \
     logindialog.cpp \
     main.cpp \
+    maincontroller.cpp \
     mainwindow.cpp\
     AdminUser.cpp \
     Cipher.cpp \
@@ -24,8 +26,10 @@ SOURCES += \
 
 HEADERS += \
     MyTime.h \
+    admincontroller.h \
     logincontroller.h \
     logindialog.h \
+    maincontroller.h \
     mainwindow.h \
     AdminUser.h \
     Cipher.h \
