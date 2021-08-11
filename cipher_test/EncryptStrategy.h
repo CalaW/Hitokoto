@@ -1,7 +1,7 @@
-#include <string>
-
 #ifndef ENCRYPTSTRATEGY_H
 #define ENCRYPTSTRATEGY_H
+
+#include <string>
 
 using std::string;
 

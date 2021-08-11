@@ -1,18 +1,17 @@
-#include <string>
-#include <utility>
+/**
+ * @file EncryptStrategy.cpp
+ * @author CalaW (maker_cc@foxmail.com)
+ * @brief Implementation of EncryptStrategy class
+ * @version 0.1
+ * @date 2021-08-07
+ * 
+ * 
+ */
 #include "EncryptStrategy.h"
-#include "Md5.h"
 
-using std::string;
-
-// string&& Md5Strategy::encrypt(const string& src) {
-//     return std::move(MD5(src).hexdigest());
-// }
-
-string Md5Strategy::encrypt(const string& src) {
-    return MD5(src).hexdigest();
-}
-
+/**
+ * @name ~EncryptStrategy
+ * @brief virtual destructor
+ * 
+ */
 EncryptStrategy::~EncryptStrategy() {}
-
-Md5Strategy::~Md5Strategy() {}

@@ -17,266 +17,414 @@
    <enum>QTabWidget::Rounded</enum>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QLabel" name="label">
-    <property name="geometry">
-     <rect>
-      <x>210</x>
-      <y>360</y>
-      <width>581</width>
-      <height>221</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Source Han Serif SC</family>
-      <pointsize>80</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="text">
-     <string>&lt;div style=&quot;color:gray&quot;&gt;一言·一行·一念&lt;/div&gt;</string>
-    </property>
-    <property name="textFormat">
-     <enum>Qt::RichText</enum>
-    </property>
-    <property name="scaledContents">
-     <bool>false</bool>
-    </property>
-    <property name="textInteractionFlags">
-     <set>Qt::NoTextInteraction</set>
-    </property>
-   </widget>
-   <widget class="QLabel" name="welcomeLabel">
-    <property name="geometry">
-     <rect>
-      <x>440</x>
-      <y>0</y>
-      <width>321</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Welcome,</string>
-    </property>
-    <property name="textFormat">
-     <enum>Qt::RichText</enum>
-    </property>
-   </widget>
-   <widget class="QTableView" name="tableView">
-    <property name="enabled">
-     <bool>true</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>40</x>
-      <y>60</y>
-      <width>541</width>
-      <height>351</height>
-     </rect>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Raised</enum>
-    </property>
-    <property name="editTriggers">
-     <set>QAbstractItemView::NoEditTriggers</set>
-    </property>
-    <property name="selectionMode">
-     <enum>QAbstractItemView::ExtendedSelection</enum>
-    </property>
-    <property name="selectionBehavior">
-     <enum>QAbstractItemView::SelectRows</enum>
-    </property>
-    <property name="showGrid">
-     <bool>false</bool>
-    </property>
-    <attribute name="horizontalHeaderVisible">
-     <bool>false</bool>
-    </attribute>
-    <attribute name="horizontalHeaderCascadingSectionResizes">
-     <bool>false</bool>
-    </attribute>
-    <attribute name="horizontalHeaderHighlightSections">
-     <bool>false</bool>
-    </attribute>
-    <attribute name="horizontalHeaderStretchLastSection">
-     <bool>true</bool>
-    </attribute>
-    <attribute name="verticalHeaderVisible">
-     <bool>false</bool>
-    </attribute>
-    <attribute name="verticalHeaderCascadingSectionResizes">
-     <bool>false</bool>
-    </attribute>
-    <attribute name="verticalHeaderStretchLastSection">
-     <bool>false</bool>
-    </attribute>
-   </widget>
-   <widget class="QWidget" name="layoutWidget">
-    <property name="geometry">
-     <rect>
-      <x>590</x>
-      <y>90</y>
-      <width>205</width>
-      <height>218</height>
-     </rect>
-    </property>
-    <layout class="QVBoxLayout" name="viewOptionLay">
-     <item>
-      <widget class="QPushButton" name="logioBtn">
-       <property name="enabled">
-        <bool>true</bool>
-       </property>
-       <property name="text">
-        <string>Login</string>
-       </property>
-       <property name="checkable">
-        <bool>false</bool>
-       </property>
-       <property name="autoDefault">
-        <bool>true</bool>
-       </property>
-       <property name="default">
-        <bool>false</bool>
-       </property>
-       <property name="flat">
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="newBtn">
-       <property name="text">
-        <string>Publish Hitokoto</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="adDelHitoBtn">
-       <property name="text">
-        <string>Delete Hitokoto</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="adManageBtn">
-       <property name="text">
-        <string>Add User</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QCheckBox" name="timeRangeCheck">
-       <property name="text">
-        <string>View by Time Range</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <layout class="QGridLayout" name="timeEdtLay">
-       <item row="0" column="1">
-        <widget class="QDateTimeEdit" name="fromTimeEdt">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <property name="dateTime">
-          <datetime>
-           <hour>0</hour>
-           <minute>0</minute>
-           <second>0</second>
-           <year>1970</year>
-           <month>1</month>
-           <day>1</day>
-          </datetime>
-         </property>
-         <property name="date">
-          <date>
-           <year>1970</year>
-           <month>1</month>
-           <day>1</day>
-          </date>
-         </property>
-         <property name="maximumDateTime">
-          <datetime>
-           <hour>23</hour>
-           <minute>59</minute>
-           <second>59</second>
-           <year>3000</year>
-           <month>12</month>
-           <day>31</day>
-          </datetime>
-         </property>
-         <property name="minimumDateTime">
-          <datetime>
-           <hour>0</hour>
-           <minute>0</minute>
-           <second>0</second>
-           <year>1970</year>
-           <month>1</month>
-           <day>1</day>
-          </datetime>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="1">
-        <widget class="QDateTimeEdit" name="toTimeEdt">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <property name="dateTime">
-          <datetime>
-           <hour>23</hour>
-           <minute>59</minute>
-           <second>59</second>
-           <year>3000</year>
-           <month>12</month>
-           <day>31</day>
-          </datetime>
-         </property>
-         <property name="maximumDateTime">
-          <datetime>
-           <hour>23</hour>
-           <minute>59</minute>
-           <second>59</second>
-           <year>3000</year>
-           <month>12</month>
-           <day>31</day>
-          </datetime>
-         </property>
-         <property name="minimumDateTime">
-          <datetime>
-           <hour>0</hour>
-           <minute>0</minute>
-           <second>0</second>
-           <year>1970</year>
-           <month>9</month>
-           <day>14</day>
-          </datetime>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="0">
-        <widget class="QLabel" name="toLabel">
-         <property name="text">
-          <string>To</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="0">
-        <widget class="QLabel" name="fromLabel">
-         <property name="text">
-          <string>From</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-    </layout>
-   </widget>
-   <zorder>layoutWidget</zorder>
-   <zorder>label</zorder>
-   <zorder>welcomeLabel</zorder>
-   <zorder>tableView</zorder>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <widget class="QTableView" name="tableView">
+          <property name="enabled">
+           <bool>true</bool>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <property name="editTriggers">
+           <set>QAbstractItemView::NoEditTriggers</set>
+          </property>
+          <property name="selectionMode">
+           <enum>QAbstractItemView::ExtendedSelection</enum>
+          </property>
+          <property name="selectionBehavior">
+           <enum>QAbstractItemView::SelectRows</enum>
+          </property>
+          <property name="showGrid">
+           <bool>false</bool>
+          </property>
+          <attribute name="horizontalHeaderVisible">
+           <bool>false</bool>
+          </attribute>
+          <attribute name="horizontalHeaderCascadingSectionResizes">
+           <bool>false</bool>
+          </attribute>
+          <attribute name="horizontalHeaderHighlightSections">
+           <bool>false</bool>
+          </attribute>
+          <attribute name="horizontalHeaderStretchLastSection">
+           <bool>true</bool>
+          </attribute>
+          <attribute name="verticalHeaderVisible">
+           <bool>false</bool>
+          </attribute>
+          <attribute name="verticalHeaderCascadingSectionResizes">
+           <bool>false</bool>
+          </attribute>
+          <attribute name="verticalHeaderStretchLastSection">
+           <bool>false</bool>
+          </attribute>
+         </widget>
+        </item>
+        <item>
+         <layout class="QVBoxLayout" name="viewOptionLay">
+          <item>
+           <spacer name="verticalSpacer_3">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>0</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QLabel" name="welcomeLabel">
+            <property name="layoutDirection">
+             <enum>Qt::RightToLeft</enum>
+            </property>
+            <property name="text">
+             <string>Welcome,</string>
+            </property>
+            <property name="textFormat">
+             <enum>Qt::RichText</enum>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="verticalSpacer_6">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>0</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="logioBtn">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
+            <property name="text">
+             <string>Login</string>
+            </property>
+            <property name="checkable">
+             <bool>false</bool>
+            </property>
+            <property name="autoDefault">
+             <bool>true</bool>
+            </property>
+            <property name="default">
+             <bool>false</bool>
+            </property>
+            <property name="flat">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="newBtn">
+            <property name="text">
+             <string>Publish Hitokoto</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="changePwdBtn">
+            <property name="text">
+             <string>Change Password</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="adDelHitoBtn">
+            <property name="text">
+             <string>Delete Hitokoto</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="adManageBtn">
+            <property name="text">
+             <string>Manage User</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="verticalSpacer_2">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>0</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="timeRangeCheck">
+            <property name="text">
+             <string>View by Time Range</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QGridLayout" name="timeEdtLay">
+            <item row="0" column="1">
+             <widget class="QDateTimeEdit" name="fromTimeEdt">
+              <property name="enabled">
+               <bool>false</bool>
+              </property>
+              <property name="dateTime">
+               <datetime>
+                <hour>0</hour>
+                <minute>0</minute>
+                <second>0</second>
+                <year>1970</year>
+                <month>1</month>
+                <day>1</day>
+               </datetime>
+              </property>
+              <property name="date">
+               <date>
+                <year>1970</year>
+                <month>1</month>
+                <day>1</day>
+               </date>
+              </property>
+              <property name="maximumDateTime">
+               <datetime>
+                <hour>23</hour>
+                <minute>59</minute>
+                <second>59</second>
+                <year>3000</year>
+                <month>12</month>
+                <day>31</day>
+               </datetime>
+              </property>
+              <property name="minimumDateTime">
+               <datetime>
+                <hour>0</hour>
+                <minute>0</minute>
+                <second>0</second>
+                <year>1970</year>
+                <month>1</month>
+                <day>1</day>
+               </datetime>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="QDateTimeEdit" name="toTimeEdt">
+              <property name="enabled">
+               <bool>false</bool>
+              </property>
+              <property name="dateTime">
+               <datetime>
+                <hour>23</hour>
+                <minute>59</minute>
+                <second>59</second>
+                <year>3000</year>
+                <month>12</month>
+                <day>31</day>
+               </datetime>
+              </property>
+              <property name="maximumDateTime">
+               <datetime>
+                <hour>23</hour>
+                <minute>59</minute>
+                <second>59</second>
+                <year>3000</year>
+                <month>12</month>
+                <day>31</day>
+               </datetime>
+              </property>
+              <property name="minimumDateTime">
+               <datetime>
+                <hour>0</hour>
+                <minute>0</minute>
+                <second>0</second>
+                <year>1970</year>
+                <month>9</month>
+                <day>14</day>
+               </datetime>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="0">
+             <widget class="QLabel" name="toLabel">
+              <property name="text">
+               <string>To</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="0">
+             <widget class="QLabel" name="fromLabel">
+              <property name="text">
+               <string>From</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <spacer name="verticalSpacer">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </item>
+    <item row="1" column="0">
+     <layout class="QHBoxLayout" name="horizontalLayout_3">
+      <item>
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QLabel" name="label">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="font">
+         <font>
+          <family>Source Han Serif SC</family>
+          <pointsize>80</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; color:#808080;&quot;&gt;一言·一行·一念&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="textFormat">
+         <enum>Qt::RichText</enum>
+        </property>
+        <property name="scaledContents">
+         <bool>false</bool>
+        </property>
+        <property name="textInteractionFlags">
+         <set>Qt::NoTextInteraction</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <item>
+         <spacer name="verticalSpacer_4">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeType">
+           <enum>QSizePolicy::Maximum</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_2">
+          <property name="font">
+           <font>
+            <family>Source Han Sans SC</family>
+            <pointsize>24</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; color:#808080;&quot;&gt;Made by CalaW &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="textFormat">
+           <enum>Qt::RichText</enum>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_3">
+          <property name="font">
+           <font>
+            <family>Source Han Sans SC</family>
+            <pointsize>24</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:18pt; color:#808080;&quot;&gt;Under &lt;/span&gt;&lt;span style=&quot; color:#808080;&quot;&gt;⚖️&lt;/span&gt;&lt;span style=&quot; font-size:18pt; color:#808080;&quot;&gt;WTFPL &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="textFormat">
+           <enum>Qt::RichText</enum>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="verticalSpacer_5">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeType">
+           <enum>QSizePolicy::Maximum</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </item>
+   </layout>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

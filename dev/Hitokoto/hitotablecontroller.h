@@ -1,3 +1,12 @@
+/**
+ * @file hitotablecontroller.h
+ * @author CalaW (maker_cc@foxmail.com)
+ * @brief Controller to control new hitokoto window
+ * @version 0.1
+ * @date 2021-08-07
+ * 
+ * 
+ */
 #ifndef HITOTABLECONTROLLER_H
 #define HITOTABLECONTROLLER_H
 
@@ -6,6 +15,11 @@
 #include "MyTime.h"
 #include "Hitokoto.h"
 
+/**
+ * @class HitoTableController
+ * @brief Controller to control new hitokoto window
+ * 
+ */
 class HitoTableController : public QAbstractTableModel
 {
     Q_OBJECT
@@ -25,11 +39,11 @@ public:
     void setViewByRange(bool by_range);
     void refresh();
 private:
-    qint64 m_start_time;
-    qint64 m_end_time;
-    bool m_is_by_range;
-    multimap<time_t, Hitokoto*>::const_iterator m_begin;
-    multimap<time_t, Hitokoto*>::const_iterator m_end;
+    qint64 m_lStartTime;
+    qint64 m_lEndTime;
+    bool m_bIsByRange;
+    multimap<time_t, Hitokoto*>::const_iterator m_Begin;
+    multimap<time_t, Hitokoto*>::const_iterator m_End;
 };
 
 #endif // HITOTABLECONTROLLER_H

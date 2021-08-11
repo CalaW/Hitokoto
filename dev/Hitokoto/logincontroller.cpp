@@ -1,16 +1,37 @@
+/**
+ * @file logincontroller.cpp
+ * @author CalaW (maker_cc@foxmail.com)
+ * @brief Controller to control login window
+ * @version 0.1
+ * @date 2021-08-07
+ * 
+ * 
+ */
 #include "logincontroller.h"
 #include <QApplication>
 
-LoginController::LoginController() : current_user(nullptr)
+/**
+ * @brief Construct a new Login Controller:: Login Controller object
+ * 
+ * set default path and auto load from file when application is open
+ * 
+ */
+LoginController::LoginController() : m_pCurrentUser(nullptr)
 {
-    User::setDefaultPath(QApplication::applicationDirPath().toStdString() + "/../../../resource/user.txt");
-    User::loadFromFile();
 }
 
+/**
+ * @name Login
+ * @brief Login process
+ * 
+ * @param name 
+ * @param pwd 
+ * @return LoginResult 
+ */
 LoginResult LoginController::Login(const QString& name, const QString& pwd) {
     try {
-        current_user = User::verify(name.toStdString(), pwd.toStdString());
-        if (current_user->isAdmin()) {
+        m_pCurrentUser = User::verify(name.toStdString(), pwd.toStdString());
+        if (m_pCurrentUser->isAdmin()) {
             return LoginResult::AdminLogin;
         } else {
             return LoginResult::TrivialLogin;
@@ -28,6 +49,12 @@ LoginResult LoginController::Login(const QString& name, const QString& pwd) {
     }
 }
 
+/**
+ * @name getLoginUserPtr
+ * @brief get pointer of logined user
+ * 
+ * @return User* 
+ */
 User* LoginController::getLoginUserPtr() const {
-    return current_user;
+    return m_pCurrentUser;
 }

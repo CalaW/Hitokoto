@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>添加言·念·行</string>
+   <string>Add Hitokoto</string>
   </property>
   <property name="toolTip">
    <string/>
@@ -114,7 +114,7 @@
      <item>
       <widget class="QTextEdit" name="newHitoContentEdt">
        <property name="placeholderText">
-        <string>请输入内容</string>
+        <string>Please enter hitokoto content.</string>
        </property>
       </widget>
      </item>

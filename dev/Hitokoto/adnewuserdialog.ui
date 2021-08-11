@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>233</width>
-    <height>138</height>
+    <width>274</width>
+    <height>190</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -29,14 +29,31 @@
        </property>
       </spacer>
      </item>
-     <item row="2" column="1">
-      <widget class="QLabel" name="label_2">
+     <item row="2" column="2">
+      <widget class="QLineEdit" name="newUserNameEdt"/>
+     </item>
+     <item row="1" column="1">
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string>Method</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="QLabel" name="pwdLabel">
        <property name="text">
         <string>Password</string>
        </property>
       </widget>
      </item>
-     <item row="1" column="3">
+     <item row="3" column="2">
+      <widget class="QLineEdit" name="newUserPwdEdt">
+       <property name="echoMode">
+        <enum>QLineEdit::Password</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="3">
       <spacer name="horizontalSpacer">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
@@ -53,32 +70,28 @@
       </spacer>
      </item>
      <item row="1" column="2">
-      <widget class="QLineEdit" name="newUserNameEdt"/>
+      <widget class="QComboBox" name="methodChk">
+       <item>
+        <property name="text">
+         <string>Add user</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Delete User</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Change User Password</string>
+        </property>
+       </item>
+      </widget>
      </item>
-     <item row="1" column="1">
+     <item row="2" column="1">
       <widget class="QLabel" name="label">
        <property name="text">
         <string>Username</string>
-       </property>
-      </widget>
-     </item>
-     <item row="3" column="2">
-      <spacer name="verticalSpacer_2">
-       <property name="orientation">
-        <enum>Qt::Vertical</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>20</width>
-         <height>40</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item row="2" column="2">
-      <widget class="QLineEdit" name="newUserPwdEdt">
-       <property name="echoMode">
-        <enum>QLineEdit::Password</enum>
        </property>
       </widget>
      </item>
@@ -94,6 +107,19 @@
         <size>
          <width>0</width>
          <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item row="4" column="2">
+      <spacer name="verticalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>40</height>
         </size>
        </property>
       </spacer>

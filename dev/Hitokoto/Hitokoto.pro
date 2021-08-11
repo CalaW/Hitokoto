@@ -11,7 +11,7 @@ CONFIG += c++11
 SOURCES += \
     MyTime.cpp \
     adnewuserdialog.cpp \
-    adusermandialog.cpp \
+    changepwddialog.cpp \
     dialognewhito.cpp \
     hitotablecontroller.cpp \
     logincontroller.cpp \
@@ -26,12 +26,13 @@ SOURCES += \
     Md5.cpp \
     TrivialUser.cpp \
     User.cpp \
-    newhitocontroller.cpp
+    newhitocontroller.cpp \
+    Md5Strategy.cpp
 
 HEADERS += \
     MyTime.h \
     adnewuserdialog.h \
-    adusermandialog.h \
+    changepwddialog.h \
     dialognewhito.h \
     hitotablecontroller.h \
     logincontroller.h \
@@ -45,14 +46,18 @@ HEADERS += \
     Md5.h \
     TrivialUser.h \
     User.h \
-    newhitocontroller.h
+    newhitocontroller.h \
+    Md5Strategy.h
 
 FORMS += \
     adnewuserdialog.ui \
-    adusermandialog.ui \
+    changepwddialog.ui \
     dialognewhito.ui \
     logindialog.ui \
     mainwindow.ui
+
+ICON = icon.icns
+
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -60,3 +65,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 RESOURCES +=
+
+DISTFILES +=

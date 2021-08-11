@@ -26,7 +26,11 @@ signals:
 
 private slots:
     void loginDialogSuccess(const LoginController&);
-    void adNewUserDialogSuccess(const QString& name, const QString& pwd);
+    void adAddUserDialogSuccess(const QString& name, const QString& pwd);
+    void adDelUserDialogSuccess(const QString& name);
+    void adChUserPwdDialogSuccess(const QString& name, const QString& pwd);
+    void changePwdDialogSuccess(const QString& prevPwd, const QString& newPwd);
+
     void on_logioBtn_clicked();
 
     void on_newBtn_clicked();
@@ -38,6 +42,8 @@ private slots:
     void on_fromTimeEdt_dateTimeChanged(const QDateTime &dateTime);
 
     void on_toTimeEdt_dateTimeChanged(const QDateTime &dateTime);
+
+    void on_changePwdBtn_clicked();
 
 private:
     Ui::MainWindow *ui;

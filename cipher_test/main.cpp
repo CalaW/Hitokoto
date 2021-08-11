@@ -2,6 +2,7 @@
 #include <string>
 #include "Cipher.h"
 #include "EncryptStrategy.h"
+#include "Md5Strategy.h"
 
 using std::string;
 int main()
